@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    <title>Update</title>
+</head>
+<body>
+    <div class="formarea">
+        <form action="/feature" method="POST">
+            <div class="form-group">
+                <label for="id" style="font-weight: 800;">ID</label>
+                <input type="text" name="id" value="{{ data[0] }}" class="form-control" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="name" style="font-weight: 800;">Name</label>
+                <input type="text" name="name" value="{{ data[1] }}" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="rank" style="font-weight: 800;">Rank</label>
+                <select name="rank" id="rank" class="form-control">
+                    <option value="Admin">Admin</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Developer">Developer</option>
+                </select>
+            </div>  
+
+            <div class="form-group">
+                <label for="dob" style="font-weight: 800;">Date of Birth</label>
+                <input type="date" id="date" name="dob" value="{{data[2]}}" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="address" style="font-weight: 800;">Address</label>
+                <textarea name="address" id="address" class="form-control" >{{data[4]}}</textarea>
+            </div>
+
+            <div class="form-froup">
+                <input type="submit" class="btn btn-primary" value="New" id="new" name="action" formnovalidate>
+                <input type="submit" class="btn btn-primary" value="Update" id="update" name="action">
+                <input type="submit" class="btn btn-primary" value="Delete" id="delete" name="action" formnovalidate>
+                <input type="submit" class="btn btn-primary" value="List" id="list" name="action" formnovalidate>
+            </div>
+        </form>
+
+        {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for message in messages%}
+                    {% if 'Error' not in message[1]: %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message[1] }}
+                        </div>
+                    {% endif %}
+                    {% if 'Error' in message[1]: %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message[1] }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif%}
+        {% endwith%}
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            document.getElementById('rank').value = "{{ data[3] }}"
+        });
+        console.log("{{ data[3] }}")
+    </script>
+</body>
+</html>

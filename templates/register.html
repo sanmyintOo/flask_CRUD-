@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/register.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    <title>Register</title>
+</head>
+<body>
+    <h3>Register Your Account</h3>
+    <div class="formarea">
+        {% from "_formhelper.html" import render_field %}
+        <form action="/register" method="POST">
+            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
+            <dl>
+                {{ render_field(form.username, class="form-control")}}
+                {{ render_field(form.email, class="form-control")}}
+                {{ render_field(form.password, class="form-control")}}
+            </dl>
+            <input type="submit" class="btn btn-primary" value="Register">
+        </form>
+
+        {% with messages=get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for message in messages %}
+                    {% if 'Error' not in message[1]: %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message[1] }}
+                        </div>
+                    {% endif %}
+                    {% if 'Error' in message[1]: %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message[1] }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

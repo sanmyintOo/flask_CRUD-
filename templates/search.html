@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/list.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+</head>
+<body>
+    <H4 class="text-center">Search Result</H4>
+    <a href="{{url_for('list')}}"><button class="btn btn-primary mybtn">back to List</button></a>
+    <table class="table">
+        <thead>
+            <th></th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Rank</th>
+            <th>Address</th>
+        </thead>
+        {% for item in data %}
+        <tr>
+            <td>
+                <a href="{{url_for('update',i_d=item[0])}}">
+                    <button class="btn btn-primary btn-sm">Select</button>
+                </a>
+            </td>
+            <td>{{item[0]}}</td>
+            <td>{{item[1]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[3]}}</td>
+            <td>{{item[4]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

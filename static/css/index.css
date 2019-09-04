@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Muli', sans-serif;
+}
+.formarea{
+    width: 70%;
+    margin-left: 15%;
+    padding-left: 150px;
+    padding-right: 150px;
+    padding-top: 50px;
+}
+.alert{
+    margin-top: 20px
+}

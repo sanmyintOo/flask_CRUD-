@@ -1,0 +1,25 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Muli', sans-serif;
+}
+h3{
+    margin-top: 30px;
+}
+h4{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+form{
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+button{
+    margin-left: 20px;
+}
+.mybtn{
+    margin-bottom: 10px;
+}
